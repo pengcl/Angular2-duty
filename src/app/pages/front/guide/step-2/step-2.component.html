@@ -1,0 +1,66 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <h1>第二步：选择类型</h1>
+  <h2>您比较注重管家哪些能力？</h2>
+
+  <div class="capability">
+    <div class="weui-grids">
+      <div (click)="selectedCapability('出行驾驶能力',0)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/01.png">
+          <span *ngIf="capabilities.indexOf('出行驾驶能力') !== -1" [@simAnim]="animationName[0]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">出行驾驶能力</div>
+      </div>
+      <div (click)="selectedCapability('安全预防意识',1)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/02.png">
+          <span *ngIf="capabilities.indexOf('安全预防意识') !== -1" [@simAnim]="animationName[1]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">安全预防意识</div>
+      </div>
+      <div (click)="selectedCapability('运动专业知识',2)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/03.png">
+          <span *ngIf="capabilities.indexOf('运动专业知识') !== -1" [@simAnim]="animationName[2]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">运动专业知识</div>
+      </div>
+      <div (click)="selectedCapability('个人礼仪素质',3)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/04.png">
+          <span *ngIf="capabilities.indexOf('个人礼仪素质') !== -1" [@simAnim]="animationName[3]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">个人礼仪素质</div>
+      </div>
+      <div (click)="selectedCapability('法律法规常识',4)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/05.png">
+          <span *ngIf="capabilities.indexOf('法律法规常识') !== -1" [@simAnim]="animationName[4]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">法律法规常识</div>
+      </div>
+      <div (click)="selectedCapability('健全心理知识',5)" class="weui-grid">
+        <div class="img-box">
+          <img src="/assets/images/front/guide/06.png">
+          <span *ngIf="capabilities.indexOf('健全心理知识') !== -1" [@simAnim]="animationName[5]" class="cover">
+            <img src="/assets/images/front/guide/checked.png">
+          </span>
+        </div>
+        <div class="label">健全心理知识</div>
+      </div>
+    </div>
+  </div>
+  <a [routerLink]="['/front/guide/step3']" class="btn circle yellow" href="javascript:;">开始寻找管家</a>
+</div>

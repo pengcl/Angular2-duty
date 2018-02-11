@@ -1,0 +1,217 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable has-footer">
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-profile *ngIf="housekeeper" [profile]="housekeeper"
+                   class="weui-media-box weui-media-box_appmsg"></app-profile>
+    </div>
+    <div class="weui-panel__ft">
+      <div class="weui-grids">
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">管家履历</div>
+        <span class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <p class="weui-media-box__desc">健美教练，从2013年起，庄先生开始从事健美运动，曾多次参加国内及国际大赛均取得了较好的成绩，赢得过美莱克等等</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feeds weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">客户评价</div>
+        <span class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb"
+               src="/assets/images/avatars/1.jpg"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">慕小姐
+            <app-rating class="right" [(ngModel)]="rate" [config]="ratingConfig" [readonly]="true"></app-rating>
+          </h4>
+          <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+          <ul class="weui-media-box__info">
+            <li class="weui-media-box__info__meta">文字来源</li>
+            <li class="weui-media-box__info__meta">2017/10/17</li>
+            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</li>
+          </ul>
+        </div>
+      </div>
+      <div class="weui-media-box weui-media-box_appmsg">
+
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb"
+               src="/assets/images/avatars/2.jpg"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">慕小姐
+            <app-rating class="right" [(ngModel)]="rate" [config]="ratingConfig" [readonly]="true"></app-rating>
+          </h4>
+          <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+          <ul class="weui-media-box__info">
+            <li class="weui-media-box__info__meta">文字来源</li>
+            <li class="weui-media-box__info__meta">2017/10/17</li>
+            <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feeds weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">照片</div>
+        <span class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+
+      <div class="weui-grids">
+        <div *ngFor="let img of (images ? images.slice(0,3): []);let i = index" class="weui-grid">
+          <div (click)="showGallery(i)" class="photo"
+               [ngStyle]="{'background-image':'url(' + config.prefix.wApi + img + ')'}">
+
+          </div>
+        </div>
+      </div>
+      <app-gallery [(show)]="show" [current]="galleryCurrent" (delete)="onDelete($event)" [canDelete]="false"
+                   [slides]="images"></app-gallery>
+    </div>
+
+  </div>
+
+  <div class="skills weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">技能图谱</div>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <div class="weui-progress">
+            <div class="weui-progress__lab">俯卧撑</div>
+            <div class="weui-progress__bar">
+              <div class="weui-progress__inner-bar js_progress" style="width: 70%;"><span>48个/分钟</span></div>
+            </div>
+          </div>
+          <div class="weui-progress">
+            <div class="weui-progress__lab">引体向上</div>
+            <div class="weui-progress__bar">
+              <div class="weui-progress__inner-bar js_progress" style="width: 60%;"><span>37个/分钟</span></div>
+            </div>
+          </div>
+          <div class="weui-progress">
+            <div class="weui-progress__lab">仰卧起坐</div>
+            <div class="weui-progress__bar">
+              <div class="weui-progress__inner-bar js_progress" style="width: 40%;"><span>102个/分钟</span></div>
+            </div>
+          </div>
+          <div class="weui-progress">
+            <div class="weui-progress__lab">100米短跑</div>
+            <div class="weui-progress__bar">
+              <div class="weui-progress__inner-bar js_progress" style="width: 75%;"><span>14秒</span></div>
+            </div>
+          </div>
+          <div class="weui-progress">
+            <div class="weui-progress__lab">3000米长跑</div>
+            <div class="weui-progress__bar">
+              <div class="weui-progress__inner-bar js_progress" style="width: 68%;"><span>12分10秒</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="weui-media-box__ft">
+          <div class="weui-progress__opr">
+            <div class="score">
+              <div class="score-circle">
+                <div class="score-rate">
+                  <em>A</em><sub>+</sub>
+                </div>
+              </div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="weui-media-box">
+        <canvas id="mountNode" style="width:100%;height:200px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-btn-area">
+    <button [userTrack]="'submit'" class="weui-btn weui-btn_warn">
+      提交
+    </button>
+  </div>
+
+  <!--<div class="photos">
+    <div class="weui-grids">
+      <a *ngFor="let item of slides" href="javascript:;" (click)="showGallery(true)" class="weui-grid">
+        <img src="{{item}}" alt="">
+      </a>
+    </div>
+  </div>-->
+
+
+</div>

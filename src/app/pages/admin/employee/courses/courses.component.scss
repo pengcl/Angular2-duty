@@ -1,0 +1,14 @@
+.weui-panel {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+.weui-media-box__hd {
+  width: 1.1rem;
+  height: 0.8rem;
+  .weui-media-box__thumb {
+    border-radius: 0.06rem;
+    height: 100%;
+  }
+}

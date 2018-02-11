@@ -1,0 +1,72 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable has-footer">
+  <div class="weui-cells" *ngIf="housekeeper">
+
+    <a class="weui-cell weui-cell_access" routerLink="/admin/uploader/avatar">
+      <div class="weui-cell__bd">
+        <p>头像</p>
+      </div>
+      <div class="weui-cell__ft"><img class="avatar" src="{{config.prefix.wApi + housekeeper.headimageurl}}" alt=""
+                                      style="margin-left:5px;display:block"></div>
+    </a>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>姓名</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.name}}</div>
+    </div>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>年龄</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.age}}</div>
+    </div>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>籍贯</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.placeoforigin}}</div>
+    </div>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>身高</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.height}}CM</div>
+    </div>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>体重</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.weight}}KG</div>
+    </div>
+    <div class="weui-cell" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>手机号码</p>
+      </div>
+      <div class="weui-cell__ft">{{housekeeper.mobile}}</div>
+    </div>
+  </div>
+
+  <div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <div class="weui-uploader">
+          <div class="weui-uploader__hd">
+            <p class="weui-uploader__title">照片</p>
+            <div class="weui-uploader__info">{{images?.length}}张</div>
+          </div>
+          <div class="weui-uploader__bd">
+            <ul class="weui-uploader__files" id="uploaderFiles">
+              <li *ngFor="let item of images;let i = index;" (click)="showGallery(i)" class="weui-uploader__file"
+                  [ngStyle]="{'background-image':'url(' + config.prefix.wApi + item + ')'}"></li>
+            </ul>
+            <div routerLink="/admin/uploader/gallery" class="weui-uploader__input-box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-gallery [(show)]="show" [current]="galleryCurrent" (delete)="onDelete($event)" [slides]="images"></app-gallery>

@@ -1,0 +1,15 @@
+<div class="weui-mask" [ngClass]="{'weui-mask__in': _shown}" (click)="hide()"></div>
+<div class="weui-dialog" [ngClass]="{'weui-dialog__in': _shown}">
+  <div class="weui-dialog__hd" *ngIf="state.title"><strong class="weui-dialog__title">{{state.title}}</strong></div>
+  <div class="weui-dialog__bd" *ngIf="state.content" [innerHTML]="state.content"></div>
+  <div class="weui-dialog__ft">
+    <!--<a href="#" *ngFor="let item of config.btns"
+       class="weui-dialog__btn weui-dialog__btn_{{item.type}}"
+       (click)="_onSelect(item)">{{item.text}}</a>-->
+    <a href="javascript:;" *ngIf="state.cancel" (click)="cancel();"
+       class="weui-dialog__btn weui-dialog__btn_default">{{state.cancel ? state.cancel : '取消'}}</a>
+    <a href="javascript:;" (click)="confirm();"
+       class="weui-dialog__btn weui-dialog__btn_primary">{{state.confirm ? state.confirm : '确定'}}</a>
+  </div>
+</div>
+

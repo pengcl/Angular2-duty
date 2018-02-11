@@ -1,0 +1,41 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <form novalidate [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <input formControlName="eventTypeId" class="weui-input" type="hidden">
+    <div class="weui-cells__title">事件类型：<em>离职</em></div>
+
+    <div class="weui-cells weui-cells_form">
+      <a (click)="onPickerShow('datetime','quitDate')" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && eventForm.get('quitDate').invalid}">
+        <div class="weui-cell__bd">
+          <input formControlName="quitDate" class="weui-input" type="hidden" value="">
+          <p>离职日期</p>
+        </div>
+        <div class="weui-cell__ft">{{eventForm.get('quitDate').value ?
+          eventForm.get('quitDate').value:'未选'}}
+          <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells__title">离职原因</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea formControlName="eventTitle" class="weui-textarea" placeholder="请输入您的请假事由(不少于10个字)"
+                    rows="3"></textarea>
+          <div class="weui-textarea-counter"><span>{{eventForm.value.eventTitle.length ? eventForm.value.eventTitle.length : 0}}</span>/200
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-cells__tips">温馨提示：离职申请必须提前30天发起申请，并与平台充分沟通相关事宜。</div>
+
+    <div class="weui-btn-area">
+      <button type="button" (click)="makeSure()" class="weui-btn weui-btn_primary" [disabled]="eventForm.invalid">
+        提交申请
+      </button>
+    </div>
+  </form>
+</div>

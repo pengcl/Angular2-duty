@@ -1,0 +1,268 @@
+<app-navbar [userTrack]="'load'" [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable has-footer">
+
+  <form novalidate [formGroup]="reserveForm" (ngSubmit)="onSubmit()">
+    <div class="order" [ngStyle]="{'display':protocolShow ? 'none' : 'block' }">
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+          <app-profile *ngIf="housekeeper" [profile]="housekeeper"
+                       class="weui-media-box weui-media-box_appmsg"></app-profile>
+        </div>
+      </div>
+
+      <div class="weui-cells__title">服务时间</div>
+      <div class="weui-cells weui-cells_form">
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('serviceStartDate').invalid}"
+           (click)="onPickerShow('date','serviceStartDate')" href="javascript:;">
+          <div class="weui-cell__bd">
+            <input formControlName="serviceStartDate" class="weui-input" type="hidden" value="">
+            <p>开始时间</p>
+          </div>
+          <div class="weui-cell__ft">{{reserveForm.get('serviceStartDate').value ?
+            reserveForm.get('serviceStartDate').value:'未选'}}
+            <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('servicePeriod').invalid}"
+           (click)="onShow('servicePeriod')" href="javascript:;">
+          <div class="weui-cell__bd">
+            <input formControlName="servicePeriod" class="weui-input" type="hidden" value="">
+            <p>需要管家服务</p>
+          </div>
+          <div class="weui-cell__ft">{{reserveForm.get('servicePeriod').value ?
+            reserveForm.get('servicePeriod').value:'未选'}}<span *ngIf="reserveForm.get('servicePeriod').value">个月</span>
+            <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="weui-cells__title">您需要的服务</div>
+      <div class="weui-cells weui-cells_form">
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('workTypeIds').invalid}"
+           (click)="onShow('workTypeIds','workTypeNames')" href="javascript:;">
+          <div class="weui-cell__bd">
+            <input formControlName="workTypeIds" class="weui-input" type="hidden" value="">
+            <input formControlName="workTypeNames" class="weui-input" type="hidden" value="">
+            <p>主要工作类型</p>
+          </div>
+          <div class="weui-cell__ft">{{reserveForm.get('workTypeNames').value ?
+            reserveForm.get('workTypeNames').value:'未选'}} <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('serviceAreaId').invalid}"
+           (click)="onShow('serviceAreaId','serviceAreaName')" href="javascript:;">
+          <div class="weui-cell__bd">
+            <input formControlName="serviceAreaId" class="weui-input" type="hidden" value="">
+            <input formControlName="serviceAreaName" class="weui-input" type="hidden" value="">
+            <p>服务城市</p>
+          </div>
+          <div class="weui-cell__ft">{{reserveForm.get('serviceAreaName').value ?
+            reserveForm.get('serviceAreaName').value:'未选'}} <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="weui-cells__title">出勤要求</div>
+      <div class="weui-cells weui-cells_form">
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('startJobTime').invalid}"
+           (click)="onPickerShow('time','startJobTime')" href="javascript:;">
+          <div class="weui-cell__hd"><label for="" class="weui-label">从</label></div>
+          <div class="weui-cell__bd">
+            <input formControlName="startJobTime" class="weui-input" type="hidden" value="">
+            <p>{{reserveForm.get('startJobTime').value ?
+              reserveForm.get('startJobTime').value:'开始时间'}}</p>
+          </div>
+          <div class="weui-cell__ft">开始上班 <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('endJobTime').invalid}"
+           (click)="onPickerShow('time','endJobTime')" href="javascript:;">
+          <div class="weui-cell__hd"><label for="" class="weui-label">至</label></div>
+          <div class="weui-cell__bd">
+            <input formControlName="endJobTime" class="weui-input" type="hidden" value="">
+            <p>{{reserveForm.get('endJobTime').value ?
+              reserveForm.get('endJobTime').value:'下班时间'}}</p>
+          </div>
+          <div class="weui-cell__ft">下班 <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+        <a class="weui-cell weui-cell_access"
+           [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('workDay').invalid}" (click)="onShowExtra(true)"
+           href="javascript:;">
+          <div class="weui-cell__bd">
+            <input formControlName="workDay" class="weui-input" type="hidden" value="">
+            <p>工作日</p>
+          </div>
+          <div class="weui-cell__ft">{{reserveForm.get('workDay').value ?
+            reserveForm.get('workDay').value:'未选'}} <i class="weui-icon-warn"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="weui-cells__title">出勤备注</div>
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__bd">
+            <textarea formControlName="attendanceNotes" class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
+            <div class="weui-textarea-counter"><span>{{reserveForm.get('attendanceNotes').value.length}}</span>/200
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weui-cells__title">详细要求</div>
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__bd">
+            <textarea formControlName="detailed" class="weui-textarea" placeholder="请输入文本" rows="3"></textarea>
+            <div class="weui-textarea-counter"><span>{{reserveForm.get('detailed').value.length}}</span>/200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="weui-cells__title">您的联系方式</div>
+      <div class="weui-cells weui-cells_form">
+        <div class="weui-cell" [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('customerName').invalid}">
+          <div class="weui-cell__hd"><label for="" class="weui-label">您的称呼</label></div>
+          <div class="weui-cell__bd">
+            <input formControlName="customerName" class="weui-input" type="text" value="" placeholder="请输入姓名">
+          </div>
+          <div class="weui-cell__ft">
+            <i class="weui-icon-warn"></i>
+          </div>
+        </div>
+        <div class="weui-cell" [ngClass]="{'weui-cell_warn':isSubmit && reserveForm.get('customerMobile').invalid}">
+          <div class="weui-cell__hd"><label for="" class="weui-label">联系电话</label></div>
+          <div class="weui-cell__bd">
+            <input formControlName="customerMobile" class="weui-input" type="number" pattern="[0-9]*" value=""
+                   placeholder="请输入手机号">
+          </div>
+          <div class="weui-cell__ft">
+            <i class="weui-icon-warn"></i>
+          </div>
+        </div>
+      </div>
+      <div class="weui-cells__tips">大牛管家向您承诺，您的所有资料均会严格保密，请放心填写。</div>
+    </div>
+
+    <div class="protocol" [ngStyle]="{'display':protocolShow ? 'block' : 'none' }">
+      <div class="weui-panel">
+        <div class="weui-panel__hd">用户协议</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box weui-media-box_text" [innerHTML]="protocolContent"></div>
+        </div>
+      </div>
+      <label for="weuiAgree" class="weui-agree">
+        <input formControlName="agree" id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+        <span class="weui-agree__text">我已清楚了解协议内容</span>
+      </label>
+    </div>
+
+    <div class="weui-btn-area">
+      <button [userTrack]="'submit'" [ngClass]="{'weui-btn_disabled':reserveForm.invalid}"
+              class="weui-btn weui-btn_primary">
+        提交
+      </button>
+    </div>
+
+    <div id="workDay">
+      <div class="weui-mask" *ngIf="extraShow" style="opacity: 1"></div>
+      <div class="weui-actionsheet" [ngClass]="{'weui-actionsheet_toggle':extraShow}">
+        <div class="weui-actionsheet__title">
+          <p class="weui-actionsheet__title-text">请选择工作日</p>
+        </div>
+        <div class="weui-cells weui-cells_checkbox" style="margin-top: 0">
+          <label class="weui-cell weui-check__label" for="m11">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m11">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期一</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m12">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m12">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期二</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m13">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m13">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期三</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m14">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m14">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期四</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m15">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m15">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期五</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m16">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m16">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期六</p>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label" for="m17">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check" id="m17">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>星期日</p>
+            </div>
+          </label>
+        </div>
+        <div class="weui-actionsheet__action">
+          <div class="weui-actionsheet__cell" (click)="onShowExtra(false)">确定</div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!--<app-actionsheet *ngIf="actionSheetData" [show]="actionSheetShow" [config]="actionSheetData">
+  <div class="weui-actionsheet__title">
+    <p class="weui-actionsheet__title-text">请选择{{actionSheetData.title}}</p>
+  </div>
+  <div class="weui-actionsheet__menu">
+    <div *ngFor="let item of actionSheetData.data" (click)="onSelected(actionSheetData.type,item)"
+         class="weui-actionsheet__cell">{{item.name}}
+    </div>
+  </div>
+  <div class="weui-actionsheet__action">
+    <div class="weui-actionsheet__cell">取消</div>
+  </div>
+</app-actionsheet>
+<app-gallery *ngIf="gallery" [slides]="slides"></app-gallery>-->

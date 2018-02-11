@@ -1,0 +1,134 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable has-footer">
+  <!--<div class="userinfo" *ngIf="user">
+    <div class="userinfo-avatar">
+      <img src="{{user.wx.headimgurl}}" background-size="cover"/>
+      <span class="weui-badge" style="position: absolute;bottom: -.4em;right: -1em;">金牌管家</span>
+    </div>
+    <div class="userinfo-nickname">{{user.wx.nickname}}&lt;!&ndash;<span>金牌管家</span>&ndash;&gt;</div>
+    <div class="userinfo-service weui-flex">
+      <div class="weui-flex__item" style="text-align: right"><span>服务对象：李先生</span></div>
+      <div class="dot">●</div>
+      <div class="weui-flex__item" style="text-align: left"><span>2017.12.15-2018.06.14</span></div>
+    </div>
+  </div>-->
+
+  <div class="user-info weui-panel weui-panel_access" *ngIf="userInfo">
+    <div class="weui-panel__bd">
+      <a routerLink="/admin/employee/setting" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="avatar weui-media-box__thumb"
+               src="{{config.prefix.wApi + userInfo.headimageurl}}"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{userInfo.name}} <span class="ui-label hollow horizontal yellow circle">{{userInfo.levelname}}管家</span>
+          </h4>
+          <p class="weui-media-box__desc">{{userInfo.serviceareanames}}</p>
+        </div>
+        <div class="weui-media-box__ft">编辑</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="panels">
+    <div class="housekeepers weui-panel" *ngIf="employers?.length > 0">
+      <div class="weui-panel__hd">当前服务客户</div>
+      <div class="weui-panel__bd">
+        <div class="weui-media-box weui-media-box_small-appmsg">
+          <div class="weui-cells">
+            <a *ngFor="let employer of employers" class="weui-cell weui-cell_access" href="javascript:;">
+              <div class="weui-cell__bd weui-cell_primary">
+                <p>{{employer.cust_name}}</p>
+              </div>
+              <span class="weui-cell__ft">2018-01-07 ~ 2018-01-07</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard weui-panel">
+      <div class="weui-panel__hd">我的事务</div>
+      <div class="weui-panel__bd">
+        <div class="weui-grids">
+          <a routerLink="/admin/employee/clockIn" class="weui-grid">
+            <div class="item-box">
+              <div class="img red">
+                <img src="/assets/images/icons/white/location_fill.png">
+                <!--<span class="weui-badge">1</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">打卡</div>
+              </div>
+            </div>
+          </a>
+          <a routerLink="/admin/employee/setting" class="weui-grid">
+            <div class="item-box">
+              <div class="img green">
+                <img src="/assets/images/icons/white/profile_fill.png">
+                <!--<span class="weui-badge">4</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">个人资料</div>
+              </div>
+            </div>
+          </a>
+          <a routerLink="/admin/employee/message" class="weui-grid">
+            <div class="item-box">
+              <div class="img yellow">
+                <img src="/assets/images/icons/white/community_fill_light.png">
+                <!--<span class="weui-badge">1</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">我的消息</div>
+              </div>
+            </div>
+          </a>
+          <a routerLink="" class="weui-grid">
+            <div class="item-box">
+              <div class="img yellow">
+                <img src="/assets/images/icons/white/repair_fill.png">
+                <!--<span class="weui-badge">2</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">我的服务</div>
+              </div>
+            </div>
+          </a>
+          <a routerLink="/admin/employee/courses" class="weui-grid">
+            <div class="item-box">
+              <div class="img blue">
+                <img src="/assets/images/icons/white/selection_fill.png">
+                <!--<span class="weui-badge">3</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">学习提升</div>
+              </div>
+            </div>
+          </a>
+          <a routerLink="/admin/employee/ADM" class="weui-grid">
+            <div class="item-box">
+              <div class="img green">
+                <img src="/assets/images/icons/white/edit.png">
+                <!--<span class="weui-badge">1</span>-->
+              </div>
+              <div class="txt">
+                <div class="weui-grid__label">行政</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="weui-btn-area">
+    <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">联系客服</a>
+  </div>-->
+</div>
+<div class="btns-group">
+  <div class="btn-secondary">意见反馈</div>
+  <div class="btn-secondary">联系客服</div>
+</div>

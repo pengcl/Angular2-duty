@@ -1,0 +1,193 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <!--<div class="userinfo" *ngIf="user">
+    <div class="userinfo-avatar">
+      <img src="{{user.wx.headimgurl}}" background-size="cover"/>
+      <span class="weui-badge" style="position: absolute;bottom: -.4em;right: -1em;">金牌管家</span>
+    </div>
+    <div class="userinfo-nickname">{{user.wx.nickname}}&lt;!&ndash;<span>金牌管家</span>&ndash;&gt;</div>
+    <div class="userinfo-service weui-flex">
+      <div class="weui-flex__item" style="text-align: right"><span>服务对象：李先生</span></div>
+      <div class="dot">●</div>
+      <div class="weui-flex__item" style="text-align: left"><span>2017.12.15-2018.06.14</span></div>
+    </div>
+  </div>-->
+
+  <div class="user-info weui-panel">
+    <div class="weui-panel__bd">
+      <div href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="avatar weui-media-box__thumb"
+               src="{{employer?.headimageurl ? employer.headimageurl : '/assets/images/logo.png'}}"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{employer?.cust_name}}</h4>
+          <p class="weui-media-box__desc">广东 广州</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="housekeepers weui-panel">
+    <div class="weui-panel__hd">当前服务管家</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <a *ngFor="let contract of contractList" class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd weui-cell_primary">
+              <p>{{contract.housekeepername}}</p>
+            </div>
+            <span class="weui-cell__ft">{{contract.servicestartdate | date : 'yyyy-MM-dd'}} ~ {{contract.serviceenddate | date : 'yyyy-MM-dd'}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard weui-panel">
+    <div class="weui-panel__hd">我的事务</div>
+    <div class="weui-panel__bd">
+      <div class="weui-grids">
+        <a [routerLink]="['/admin/employer/order/list']" class="weui-grid">
+          <div class="item-box">
+            <div class="img red">
+              <img src="/assets/images/icons/white/form_fill_light.png">
+              <span class="weui-badge">1</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">我的订单</div>
+            </div>
+          </div>
+        </a>
+        <a [routerLink]="['/admin/employer/employees']" class="weui-grid">
+          <div class="item-box">
+            <div class="img green">
+              <img src="/assets/images/icons/white/friend_fill.png">
+              <span class="weui-badge">4</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">我的管家</div>
+            </div>
+          </div>
+        </a>
+        <a [routerLink]="" class="weui-grid">
+          <div class="item-box">
+            <div class="img yellow">
+              <img src="/assets/images/icons/white/exit.png">
+              <span class="weui-badge">1</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">管家请假申请</div>
+            </div>
+          </div>
+        </a>
+        <a [routerLink]="['/admin/employer/rate/list']" class="weui-grid">
+          <div class="item-box">
+            <div class="img yellow">
+              <img src="/assets/images/icons/white/favor_fill_light.png">
+              <span class="weui-badge">2</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">人员评价</div>
+            </div>
+          </div>
+        </a>
+        <a [routerLink]="['/admin/employer/message']" class="weui-grid">
+          <div class="item-box">
+            <div class="img blue">
+              <img src="/assets/images/icons/white/community_fill_light.png">
+              <span class="weui-badge">3</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">我的消息</div>
+            </div>
+          </div>
+        </a>
+        <a [routerLink]="" class="weui-grid">
+          <div class="item-box">
+            <div class="img green">
+              <img src="/assets/images/icons/white/we_fill_light.png">
+              <span class="weui-badge">1</span>
+            </div>
+            <div class="txt">
+              <div class="weui-grid__label">推荐好友</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!--<div class="dashboard">
+    <div class="item-list weui-grids">
+      <a [routerLink]="" class="list-item weui-grid">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/location_light.png">
+            <span class="weui-badge weui-badge_dot" style="position: absolute;top: -.4em;right: -.4em;"></span>
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">打卡</div>
+          </div>
+        </div>
+      </a>
+
+      <a [routerLink]="" class="list-item weui-grid no-right-border">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/profile_light.png">
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">个人资料</div>
+          </div>
+        </div>
+      </a>
+
+      <a [routerLink]="" class="list-item weui-grid">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/comment_light.png">
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">消息</div>
+          </div>
+        </div>
+      </a>
+
+      <a [routerLink]="" class="list-item weui-grid no-right-border">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/we_fill_light.png">
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">服务</div>
+          </div>
+        </div>
+      </a>
+
+      <a [routerLink]="" class="list-item weui-grid no-bottom-border">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/medal_light.png">
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">提升</div>
+          </div>
+        </div>
+      </a>
+
+      <a [routerLink]="" class="list-item weui-grid no-bottom-border no-right-border">
+        <div class="item-box">
+          <div class="img">
+            <img class="img" src="/assets/images/icons/more_light.png">
+          </div>
+          <div class="txt">
+            <div class="weui-grid__label">更多</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>-->
+</div>

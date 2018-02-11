@@ -1,0 +1,47 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <form novalidate [formGroup]="reportCityForm" (ngSubmit)="onSubmit()">
+    <div class="weui-cells__title">抱歉目前还没能服务您的城市，请告诉我们您的所在城市和需求服务，以便我们尽快开通业务</div>
+    <div class="weui-cells weui-cells_form">
+      <a class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && reportCityForm.get('serviceAreaName').invalid}"
+         (click)="onPickerShow('city','serviceAreaName')" href="javascript:;">
+        <div class="weui-cell__bd">
+          <input formControlName="serviceAreaName" class="weui-input" type="hidden" value="">
+          <p>我在</p>
+        </div>
+        <div class="weui-cell__ft">{{reportCityForm.get('serviceAreaName').value ?
+          reportCityForm.get('serviceAreaName').value:'请选择'}} <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+      <a class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && reportCityForm.get('employeeType').invalid}"
+         (click)="onPickerShow('data','employeeType')" href="javascript:;">
+        <div class="weui-cell__bd">
+          <input formControlName="employeeType" class="weui-input" type="hidden" value="">
+          <p>我要聘请</p>
+        </div>
+        <div class="weui-cell__ft">{{reportCityForm.get('employeeType').value ?
+          reportCityForm.get('employeeType').value:'请选择'}} <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+      <div class="weui-cell" *ngIf="reportCityForm.get('employeeType').value === '其他'" [ngClass]="{'weui-cell_warn':isSubmit && reportCityForm.get('newType').invalid}">
+        <div class="weui-cell__hd"><label for="" class="weui-label">聘请类型</label></div>
+        <div class="weui-cell__bd">
+          <input formControlName="newType" class="weui-input" type="text" value="" placeholder="请输您需要的聘请类型">
+        </div>
+        <div class="weui-cell__ft">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-btn-area">
+      <button [userTrack]="'submit'" [ngClass]="{'weui-btn_disabled':reportCityForm.invalid}"
+              class="weui-btn weui-btn_primary">
+        提交
+      </button>
+    </div>
+  </form>
+</div>

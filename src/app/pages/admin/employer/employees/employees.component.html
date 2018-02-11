@@ -1,0 +1,36 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+
+  <div class="butlers">
+    <ul class="weui-grids">
+      <li [routerLink]="['/admin/employer/employees/employee',item.housekeeperid]" *ngFor="let item of butlers; let i=index" class="weui-grid">
+        <div (click)="selectedButler(item)" class="butler-box">
+          <div class="img">
+            <img src="{{config.prefix.wApi + item.headimageurl}}">
+          </div>
+          <div class="txt">
+            <p class="attr">
+              <span class="name">{{item.name}}</span>
+              <sub class="sex">
+                <span *ngIf="!!item.sex">男</span>
+                <span *ngIf="!item.sex">女</span>,
+              </sub>
+              <sub class="age">{{item.age}},</sub>
+              <sub class="origin">{{item.origin}}</sub>
+            </p>
+            <p class="skill">擅长：{{item.expertisenames.split(',')}}</p>
+            <div class="extra">
+              <div class="price left"><sub>￥</sub><span>10000</span><sub>/月</sub></div>
+              <div class="like right" (click)="like($event,i)">
+                <img *ngIf="!item.like" src="/assets/images/icons/like.png">
+                <img *ngIf="item.like" src="/assets/images/icons/like_fill.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

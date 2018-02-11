@@ -1,0 +1,18 @@
+<div *ngIf="slides" class="weui-galleries">
+  <div class="weui-gallery" [ngStyle]="{'display': show ? 'block' : 'none'}">
+    <swiper *ngIf="show" class="swiper-container" [config]="config"
+            (indexChange)="onIndexChange($event)" [(index)]="current" fxFlex="auto">
+
+        <span *ngFor="let slide of slides" class="weui-gallery__img"
+              [ngStyle]="{'background-image':'url('+ config.prefix.wApi + slide +')'}"></span>
+    </swiper>
+    <div class="weui-gallery__opr weui-flex">
+      <a *ngIf="canDelete" href="javascript:" (click)="_onDel(current)" class="weui-gallery__del weui-flex__item">
+        删除
+      </a>
+      <a href="javascript:" class="weui-gallery__del weui-flex__item" (click)="_onHide()">
+        返回
+      </a>
+    </div>
+  </div>
+</div>

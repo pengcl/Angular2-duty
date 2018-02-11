@@ -1,0 +1,41 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="userinfo">
+  <img class="userinfo-avatar" src="/assets/images/logo.png" background-size="cover"/>
+  <div class="userinfo-nickname">大牛管家</div>
+</div>
+
+<form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__hd">
+        <img style="width:20px;margin-right:5px;display:block" src="/assets/images/icons/mobile.png">
+      </div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="tel" formControlName="mobile" placeholder="请输入手机号">
+      </div>
+      <div class="weui-cell__ft" *ngIf="loginForm.get('mobile').valid"
+           (click)="getCode($event,loginForm.get('mobile').value)">
+        {{activeText}}
+      </div>
+    </div>
+    <div class="weui-cell">
+      <div class="weui-cell__hd">
+        <img style="width:20px;margin-right:5px;display:block" src="/assets/images/icons/lock.png">
+      </div>
+      <div class="weui-cell__bd">
+        <input class="weui-input" type="text" formControlName="code" placeholder="请输入验证码">
+      </div>
+    </div>
+  </div>
+
+  <a id="login" class="weui-btn weui-btn_primary" (click)="onSubmit()"
+     [ngClass]="{'weui-btn_disabled':loginForm.invalid}">登录</a>
+</form>
+
+<div class="weui-footer weui-footer_fixed-bottom">
+  <p class="weui-footer__links">
+    <a href="javascript:home();" class="weui-footer__link">大牛管家</a>
+  </p>
+  <p class="weui-footer__text">Copyright © 2008-2018 danius.cn</p>
+</div>

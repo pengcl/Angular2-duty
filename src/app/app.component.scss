@@ -1,0 +1,184 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-size: 0.14rem;
+  .bd {
+    font-size: 12px;
+    border-radius: 4px;
+  }
+}
+
+#container {
+  min-height: 100%;
+}
+
+.content-scrollable {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  background: #f8f8f8;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  &.has-nav {
+    padding-top: 0.48rem;
+  }
+  &.has-footer {
+    &:after {
+      content: "";
+      display: block;
+      height: 53px;
+    }
+  }
+  .weui-panel:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 100%;
+}
+
+sub {
+  vertical-align: baseline;
+  font-size: 75%;
+}
+
+.right {
+  float: right !important;
+}
+
+.left {
+  float: left !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.pageTips {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate3d(0px, -50%, 0px);
+  margin-top: -0.3rem;
+  p {
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+  }
+}
+
+.img-box {
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.weui-cells_form {
+  .weui-cell__ft {
+    font-size: inherit;
+  }
+  .weui-cell_switch {
+    .weui-cell__ft {
+      font-size: 0;
+    }
+  }
+}
+
+button:disabled {
+  background: #ccc;
+  opacity: 0.6;
+}
+
+.weui-grids {
+  &:after, &:before {
+    display: none;
+  }
+  .weui-grid {
+    &:after, &:before {
+      display: none;
+    }
+  }
+}
+
+.weui-cells__title {
+  font-size: 0.14rem;
+  padding: 0 0.15rem;
+}
+
+.weui-cell_link {
+  font-size: 0.14rem;
+}
+
+.weui-cells {
+  font-size: 0.17rem;
+  .weui-cell {
+    padding: 0.1rem 0.15rem;
+  }
+}
+
+.weui-btn-area {
+  margin: 1.17647059em 0.15rem .3em;
+}
+
+.weui-panel__hd {
+  padding: 0.14rem 0.15rem 0.1rem;
+  font-size: 0.13rem;
+}
+
+.weui-media-box {
+  .weui-cells {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.weui-media-box__title {
+  font-size: 0.17rem;
+}
+
+.weui-media-box__desc {
+  font-size: 0.13rem;
+}
+
+.weui-media-box__info {
+  margin-top: 0.1rem;
+  font-size: 0.13rem;
+}
+
+.weui-media-box_appmsg .weui-media-box__hd {
+  width: 0.6rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+}
+
+.weui-btn {
+  font-size: 0.18rem;
+}

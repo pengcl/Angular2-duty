@@ -1,0 +1,10 @@
+<div class="weui-tabbar">
+  <a *ngFor="let item of tabBar.list" routerLink="{{item.pagePath}}" routerLinkActive="active" class="weui-tabbar__item weui-bar__item_on">
+    <span style="display: inline-block;position: relative;">
+      <img src="{{item.iconPath}}" alt="{{item.text}}" class="weui-tabbar__icon">
+      <span class="weui-badge" *ngIf="item.badge.badge" style="position: absolute;top: -2px;right: -13px;">{{item.badge.badge}}</span>
+      <span class="weui-badge weui-badge_dot" *ngIf="item.badge.dot" style="position: absolute;top: 0;right: -6px;"></span>
+    </span>
+    <p class="weui-tabbar__label">{{item.text}}</p>
+  </a>
+</div>

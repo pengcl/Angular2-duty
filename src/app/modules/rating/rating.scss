@@ -1,0 +1,26 @@
+.weui-rating__container {
+  outline: none
+}
+
+.rating {
+  > i {
+    display: inline-block;
+    vertical-align: text-top;
+    font-size: 0.12rem;
+    &:before {
+      font-style: normal;
+    }
+  }
+  .off {
+    &:before {
+      content: '★';
+      color: #999;
+    }
+  }
+  .on {
+    &:before {
+      content: '★';
+      color: #FBA703;
+    }
+  }
+}

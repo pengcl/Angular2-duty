@@ -1,0 +1,192 @@
+.content-scrollable {
+  background: #f8f8f8;
+}
+
+.userinfo {
+  .weui-media-box__hd {
+    width: 0.96rem;
+    height: 0.96rem;
+    img {
+      border-radius: 0.06rem;
+    }
+  }
+}
+
+.feeds {
+  .weui-media-box__hd {
+    align-self: flex-start;
+  }
+}
+
+.weui-media-box__info {
+  font-size: 0.12rem;
+}
+
+.weui-grids {
+  padding: 0.1rem 0.15rem;
+  margin: -0.05rem;
+  &:before, &:after {
+    display: none;
+  }
+  .weui-grid {
+    &:before, &:after {
+      display: none;
+    }
+    width: 25%;
+    padding: 0.05rem;
+    .weui-grid__icon, .weui-grid__label {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .weui-grid__label {
+      margin-top: 0;
+    }
+    .weui-grid__icon {
+      width: 0.2rem;
+      height: 0.2rem;
+    }
+    img {
+      width: 100%;
+      border-radius: 0.06rem;
+      display: block;
+    }
+  }
+}
+
+.weui-panel {
+  .weui-panel__hd {
+    padding: 0.1rem 0 0;
+  }
+}
+
+.weui-progress__lab {
+  width: 5.5em;
+  margin-right: 0.1rem;
+  color: #666;
+}
+
+.weui-progress__bar {
+  font-size: 0.1rem;
+  background-color: rgba(251, 167, 3, 0.1);
+  over-flow: hidden;
+  height: 0.12rem;
+  border-radius: 1rem;
+  .weui-progress__inner-bar {
+    background-color: #FBA703;
+    height: 0.12rem;
+    border-radius: 1rem;
+    span {
+      padding-left: 0.1rem;
+      font-size: 0.1rem;
+      line-height: 0.12rem;
+      color: #fff;
+      display: block;
+    }
+  }
+}
+
+.weui-progress__opr {
+  margin-left: 0.15rem;
+}
+
+.weui-progress {
+  margin: 0.1rem 0;
+  font-size: 0.12rem;
+}
+
+.score {
+  font-size: 0.12rem;
+  color: #999;
+  .score-circle {
+    border: 3px solid #FBA703;
+    border-radius: 1rem;
+    .score-rate {
+      font-size: 0.24rem;
+      height: 0.6rem;
+      width: 0.6rem;
+      line-height: 0.6rem;
+      text-align: center;
+      color: #FBA703;
+      sub {
+        font-size: 0.24rem;
+      }
+    }
+  }
+  .score-label {
+    text-align: center;
+    margin-top: 0.05rem;
+  }
+}
+
+.weui-grids {
+  margin: -0.05rem;
+  &:before, &:after {
+    display: none;
+  }
+  .weui-grid {
+    &:before, &:after {
+      display: none;
+    }
+    padding: 5px;
+    .photo {
+      width: 100%;
+      height: 0.7rem;
+      overflow: hidden;
+      border-radius: 0.04rem;
+      background-size: cover;
+      background-position: top center;
+    }
+  }
+}
+
+/*.photos {
+  padding: 10px;
+  .weui-grids {
+    &:before, &:after {
+      display: none;
+    }
+    .weui-grid {
+      &:before, &:after {
+        display: none;
+      }
+      padding: 5px;
+      img {
+        width: 100%;
+        border-radius: 0.06rem;
+        display: block;
+      }
+    }
+  }
+}*/
+
+/*.userinfo-avatar {
+  width: 0.64rem;
+  height: 0.64rem;
+  margin: 0.1rem;
+  position: relative;
+  img {
+    width: 100%;
+    display: block;
+    border-radius: 50%;
+  }
+}
+
+.userinfo-nickname {
+  color: #000;
+  font-size: 0.16rem;
+  span {
+    color: #999;
+    font-size: 0.12rem;
+  }
+}
+
+.userinfo-service {
+  color: #999;
+  width: 100%;
+  margin-top: 0.05rem;
+  text-align: center;
+  .dot {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+  }
+}*/

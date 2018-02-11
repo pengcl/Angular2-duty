@@ -1,0 +1,140 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+<div class="content-scrollable has-footer">
+  <!--1.拆红包加 red_crown 2.第一次有红包加 red_have 3.拆过有红包加 red_had 4.第一次拆无红包/拆过无红包 加 red_no -->
+  <div class="red-get" id="red_status" ng-class="">
+    <dl class="user-info cf">
+      <dt>
+                    <span class="pic">
+                        <img
+                          src="//wx.qlogo.cn/mmopen/ZP9tYorTxPu1kwFoRnZqaESzdaeBHJSukqZAWTttJjXLDMvZDYDVQEictySx6XPbOtChIibAeIXCwdNClQOH41HVb7nj6uDzdp/0"
+                          alt=" ">
+                      <!-- <span class="mask_crown"></span> -->
+                        </span>
+        <span class="icon icon-wx"></span>
+      </dt>
+      <dd>
+        <p class="tit">
+          <span class="name">钢琴上的骑兵</span>
+          <span>开通<span>1个月</span>腾讯视频VIP</span>
+        </p>
+        <div class="info">
+          <p class="txt2">赠送你们10天会员，还不快抢！</p>
+        </div>
+      </dd>
+    </dl>
+    <div class="red-box">
+      <div class="red-t">
+        <div class="red-b"></div>
+        <!--拆红包-->
+        <a class="btn-crown" ng-click="getRed();" href="javascript:;">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="txt">拆红包</span>
+        </a>
+        <!--有红包-->
+        <div class="have-red">
+          <div class="tit">QQ账号</div>
+          <div class="txt">已领取<span class="name"></span>送的腾讯视频<span>VIP</span>
+          </div>
+          <div class="time"><span class="num"></span><span>天<span></span></span>
+          </div>
+          <div class="tips"></div>
+        </div>
+        <div class="have-red-btn">
+          <a class="btn-look" href="javascript:;">去充话费/流量</a>
+          <a class="btn-send" href="javascript:;">去领取，我也要送</a>
+          <!--<span class="tips">可获赠充值等额优惠券</span>-->
+        </div>
+        <!--无红包-->
+        <div class="no_red">
+        </div>
+        <div class="no-red-btn">
+          <a class="btn-send" href="javascript:;" hottag="hlw_hongbao_send">去充值，我也要送</a>
+          <span class="tips">可获赠充值等额优惠券</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--红包未被领取 开始-->
+  <div class="get-no" style="display: none;">
+    <div class="get-no">红包在此，还不快抢！</div>
+  </div>
+  <!--红包未被领取 结束-->
+
+  <div class="feed-tit">
+    <p class="tit-info"><span class="txt">人品爆发的小伙伴们 (4/6)</span></p>
+  </div>
+
+  <div class="feed-list">
+    <div class="list-item">
+      <dl class="item-dl cf">
+        <dt><span class="user-pic"><img
+          src="//q2.qlogo.cn/g?b=qq&amp;k=0gkOBHicXqjNzpfHY9L5IAw&amp;s=100&amp;t=1501385330"
+          alt=""><span class="icon icon-qq"></span></span><span class="mask-person"> </span></dt>
+        <dd>
+          <div class="tit-info"><span class="name">雷探长•</span><span
+            class="time">2017-08-01 15:11</span><span class="day">3天</span></div>
+          <p class="txt-info">万万没想到，老板你真好！</p></dd>
+      </dl>
+    </div>
+    <div class="list-item">
+      <dl class="item-dl cf">
+        <dt><span class="user-pic"><img
+          src="//q3.qlogo.cn/g?b=qq&amp;k=ljc2gJjuZiaMYsibIia0swfHw&amp;s=100&amp;t=1497491632"
+          alt=""><span class="icon icon-qq"></span></span><span class="mask-person"> </span></dt>
+        <dd>
+          <div class="tit-info"><span class="name">张子傲</span><span
+            class="time">2017-08-01 15:11</span><span class="day">1天</span></div>
+          <p class="txt-info">万万没想到，老板你真好！</p></dd>
+      </dl>
+    </div>
+    <div class="list-item">
+      <dl class="item-dl cf">
+        <dt><span class="user-pic"><img
+          src="//q1.qlogo.cn/g?b=qq&amp;k=AbPvhjF1X3U4LNvk5H6vzQ&amp;s=100&amp;t=1483292375"
+          alt=""><span class="icon icon-qq"></span></span><span class="mask-person"> </span></dt>
+        <dd>
+          <div class="tit-info"><span class="name">`錦瑟。</span><span
+            class="time">2017-08-01 14:58</span><span class="day">1天</span></div>
+          <p class="txt-info">谢土豪打赏，小的去看大片啦</p></dd>
+      </dl>
+    </div>
+    <div class="list-item">
+      <dl class="item-dl cf">
+        <dt><span class="user-pic"><img
+          src="//wx.qlogo.cn/mmopen/ZP9tYorTxPu1kwFoRnZqaESzdaeBHJSukqZAWTttJjXLDMvZDYDVQEictySx6XPbOtChIibAeIXCwdNClQOH41HVb7nj6uDzdp/0"
+          alt=""><span class="icon icon-wx"></span></span><span class="mask-person"> </span></dt>
+        <dd>
+          <div class="tit-info"><span class="name">钢琴上的骑兵</span><span
+            class="time">2017-08-01 14:54</span><span class="day">1天</span></div>
+          <p class="txt-info">我就静静地看着你装逼</p></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="rule-list">
+    <div class="rule-tit">活动规则</div>
+    <dl class="rule-txt cf">
+      <dt>1、</dt>
+      <dd><p class="txt">正价开通腾讯视频VIP会员，将根据开通套餐发放对应会员红包。</p></dd>
+    </dl>
+    <dl class="rule-txt cf">
+      <dt>2、</dt>
+      <dd><p class="txt">
+        每个红包有6次抢领机会，每个红包每人限抢一次，每月限抢最多5个红包。红包有效期为30天，过期未领取将失效。优惠券可在腾讯视频VIP会员开通时进行金额减免,优惠券请于领取后31天内使用，逾期失效。</p>
+      </dd>
+    </dl>
+    <dl class="rule-txt cf">
+      <dt>3、</dt>
+      <dd><p class="txt">话费后付费用户领取的天数将在话费包月到期后生效。</p></dd>
+    </dl>
+    <dl class="rule-txt cf">
+      <dt>4、</dt>
+      <dd><p class="txt">活动最终解释权归腾讯视频所有。</p></dd>
+    </dl>
+  </div>
+
+</div>
+
+<app-tabbar [tabBar]="tabBarConfig"></app-tabbar>

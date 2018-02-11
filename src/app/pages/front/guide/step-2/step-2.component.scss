@@ -1,0 +1,63 @@
+.content-scrollable {
+  background-image: url("/assets/images/front/guide/step-2.png");
+  background-size: 100% 100%;
+}
+
+h1 {
+  font-size: 0.24rem;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+h2 {
+  font-size: 0.15rem;
+  margin-top: 0.05rem;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+.weui-grids {
+  margin: 0.1rem 0.3rem 0;
+}
+
+.weui-grid {
+  width: 50%;
+  padding: 0.1rem;
+  text-align: center;
+  .img-box {
+    margin: 0 0.25rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.1rem;
+    .cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #333;
+      opacity: 0.5;
+      img {
+        position: absolute;
+        display: block;
+        width: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+      }
+    }
+  }
+  .label {
+    line-height: 0.2rem;
+    margin-top: 0.1rem;
+  }
+}
+
+.btn {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 80%;
+  left: 10%;
+  font-size: 0.18rem;
+}

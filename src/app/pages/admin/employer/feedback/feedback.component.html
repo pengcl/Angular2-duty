@@ -1,0 +1,54 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <form novalidate [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="weui-cells__title">意见和建议</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea formControlName="eventTitle" class="weui-textarea" placeholder="请您为我们提出意见和建议，让我们更好的为您服务。"
+                    rows="3"></textarea>
+          <div class="weui-textarea-counter"><span>{{eventForm.value.eventTitle.length ? eventForm.value.eventTitle.length : 0}}</span>/200
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <div class="weui-uploader">
+            <div class="weui-uploader__hd">
+              <p class="weui-uploader__title">图片上传</p>
+              <div class="weui-uploader__info">0/2</div>
+            </div>
+            <div class="weui-uploader__bd">
+              <ul class="weui-uploader__files" id="uploaderFiles">
+                <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                <li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>
+                <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                  <div class="weui-uploader__file-content">
+                    <i class="weui-icon-warn"></i>
+                  </div>
+                </li>
+                <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(./images/pic_160.png)">
+                  <div class="weui-uploader__file-content">50%</div>
+                </li>
+              </ul>
+              <div class="weui-uploader__input-box">
+                <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-btn-area">
+      <button type="button" (click)="makeSure()" class="weui-btn weui-btn_primary" [disabled]="eventForm.invalid">
+        提交申请
+      </button>
+    </div>
+  </form>
+</div>

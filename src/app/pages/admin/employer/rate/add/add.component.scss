@@ -1,0 +1,28 @@
+.rating {
+  .weui-media-box {
+    text-align: center;
+    padding: 0.15rem;
+    color: #FBA703;
+    .weui-rating__container {
+      i {
+        font-size: 0.4rem;
+        margin: 0 0.06rem;
+      }
+    }
+  }
+}
+
+.impression {
+  .weui-media-box {
+    padding: 0.15rem;
+  }
+}
+
+.ui-label {
+  &.curr {
+    color: #FBA703;
+    &:after {
+      border: 1px solid #FBA703;
+    }
+  }
+}

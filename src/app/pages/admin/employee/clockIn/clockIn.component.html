@@ -1,0 +1,37 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <div id="checkIns" class="date-panel">
+    <div class="weui-panel">
+      <div class="weui-panel__hd">{{dateNow | date : 'yyyy年MM月dd日'}}
+        <a class="right" routerLink="/admin/employee/clockIn/records">考勤记录</a></div>
+      <div class="weui-panel__bd">
+        <a href="javascript:void(0);" *ngIf="signInfo?.actualcheckintime" class="weui-media-box weui-media-box_appmsg">
+          <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">上班打卡 {{signInfo.actualcheckintime | date: 'HH:mm'}}</h4>
+            <p class="weui-media-box__desc">{{signInfo.startaddress}}</p>
+          </div>
+        </a>
+        <a href="javascript:void(0);" *ngIf="signInfo?.actualcheckouttime" class="weui-media-box weui-media-box_appmsg">
+          <div class="weui-media-box__bd">
+            <h4 class="weui-media-box__title">下班打卡 {{signInfo.actualcheckouttime | date: 'HH:mm'}}</h4>
+            <p class="weui-media-box__desc">{{signInfo.endaddress}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="clockIn">
+    <div id="location" class="location" (click)="clockIn($event)">
+      <div class="circle-big pulse animated"></div>
+      <div id="locationIcon" class="circle-min">
+        <p class="clock-in-label">打卡上班</p>
+        <p class="clock-in-time">{{dateNow | date: 'HH:mm:ss'}}</p>
+      </div>
+    </div>
+    <p class="clock-in-title">打卡上班</p>
+    <p class="clock-in-address" *ngIf="location.address">{{location.address}}</p>
+  </div>
+  <!--<iframe id="markPage" width="100%" height="70%" frameborder=0 scrolling="no" src=""></iframe>-->
+</div>

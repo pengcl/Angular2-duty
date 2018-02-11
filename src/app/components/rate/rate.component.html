@@ -1,0 +1,16 @@
+<div class="weui-media-box__hd">
+  <img class="avatar weui-media-box__thumb"
+       src="{{rate.avatar}}"
+       alt="">
+</div>
+<div class="weui-media-box__bd">
+  <h4 class="weui-media-box__title">{{rate.name.slice(0,1)}}{{rate.sex === 0 ? '小姐':'先生'}}
+    <sub>[{{rate.meta.createAt | date : 'MM-dd'}}]</sub>
+    <app-rating class="right" [(ngModel)]="rate.rate" [config]="ratingConfig" [readonly]="true"></app-rating>
+  </h4>
+  <p class="weui-media-box__desc">{{rate.content}}</p>
+  <div class="weui-media-box__info">
+    <span *ngFor="let tag of rate.tags" class="ui-label colors horizontal blue circle">{{tag}}</span>
+  </div>
+</div>
+

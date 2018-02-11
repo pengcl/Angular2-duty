@@ -1,0 +1,64 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+
+  <div *ngFor="let item of orderList;let i = index" class="order-item weui-panel weui-panel_access">
+    <div class="weui-panel__hd">大牛管家服务月费 <sub>共{{item.payState.periods.length}}个月</sub> <sub><a
+      [routerLink]="['/admin/employer/order/protocol', item.id]">查看协议</a></sub> <span class="right">{{item.meta.createAt | date : 'yyyy-MM-dd'}}</span></div>
+    <div class="weui-panel__bd">
+      <div *ngFor="let prod of item.employees" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="weui-media-box__thumb" src="{{prod.avatar}}" alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{prod.type.name}}</h4>
+          <p class="weui-media-box__desc">管家：{{prod.name}}, 工号：{{prod.no}}</p>
+          <p class="weui-media-box__desc">{{prod.age}}岁,{{prod.height}}CM,{{prod.weight}}KG</p>
+        </div>
+      </div>
+      <div class="periods" [ngClass]="{'slide-down':selectedIndex === i}">
+        <div class="weui-cells_radio">
+          <label *ngFor="let period of item.payState.periods" class="weui-cell weui-check__label">
+            <div class="weui-cell__bd">
+              <p>{{period.meta.createAt.split(' ')[0].split('-')[0]}}年{{period.meta.createAt.split(' ')[0].split('-')[1]}}月费用 <sub
+                  [ngClass]="{'paid':period.paid === period.amount,'unpaid':period.paid !== period.amount}">({{period.paid
+                  === period.amount ? '已支付' : '未支付'}})</sub></p>
+            </div>
+            <div class="weui-cell__ft">
+              <input type="radio" class="weui-check" [checked]="period.paid === period.amount">
+              <a href="http://pay.danius.cn/interface/payment/gotoPay.ht?orderNo={{item.no}}" *ngIf="period.paid !== period.amount" class="">立即支付</a>
+              <span class="weui-icon-checked" *ngIf="period.paid === period.amount"></span>
+            </div>
+          </label>
+          <!--<label class="weui-cell weui-check__label">
+            <div class="weui-cell__bd">
+              <p>2018年2月费用 <sub>(请于2月前完成支付)</sub></p>
+            </div>
+            <div class="weui-cell__ft">
+              <input type="radio" class="weui-check">
+              <span class="">立即支付</span>
+              <span class="weui-icon-checked"></span>
+            </div>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <div class="weui-cell__bd">
+              <p>2018年3月费用 <sub>(请于3月前完成支付)</sub></p>
+            </div>
+            <div class="weui-cell__ft">
+              <input type="radio" class="weui-check">
+              <span class="">立即支付</span>
+              <span class="weui-icon-checked"></span>
+            </div>
+          </label>-->
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" (click)="onSelected(i)" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">已经付：<sub>￥</sub><em>{{item.payState.paid}}</em><sub>.00</sub> |
+          总金额：<sub>￥</sub><em>{{item.payState.amount}}</em><sub>.00</sub></div>
+        <span class="weui-cell__ft">展开</span>
+      </a>
+    </div>
+  </div>
+</div>

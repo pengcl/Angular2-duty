@@ -1,0 +1,12 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-infinite-loader (loadmore)="onLoadMore($event)" #comp>
+        <app-rate [rate]="rate" *ngFor="let rate of rates" class="weui-media-box weui-media-box_appmsg"></app-rate>
+      </app-infinite-loader>
+    </div>
+  </div>
+
+</div>

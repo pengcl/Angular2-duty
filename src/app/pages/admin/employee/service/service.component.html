@@ -1,0 +1,98 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <!--<div class="userinfo" *ngIf="user">
+    <div class="userinfo-avatar">
+      <img src="{{user.wx.headimgurl}}" background-size="cover"/>
+      <span class="weui-badge" style="position: absolute;bottom: -.4em;right: -1em;">金牌管家</span>
+    </div>
+    <div class="userinfo-nickname">{{user.wx.nickname}}&lt;!&ndash;<span>金牌管家</span>&ndash;&gt;</div>
+    <div class="userinfo-service weui-flex">
+      <div class="weui-flex__item" style="text-align: right"><span>服务对象：李先生</span></div>
+      <div class="dot">●</div>
+      <div class="weui-flex__item" style="text-align: left"><span>2017.12.15-2018.06.14</span></div>
+    </div>
+  </div>-->
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">综合评价</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p>管家级别</p>
+            </div>
+            <div class="weui-cell__ft">{{housekeeper?.levelname}}管家</div>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p>综合服务评价</p>
+            </div>
+            <div class="weui-cell__ft"><app-rating [(ngModel)]="rate" [config]="ratingConfig" [readonly]="true"></app-rating></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">查看更多</div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="weui-panel" *ngIf="employers?.length > 0">
+    <div class="weui-panel__hd">我的客户 <span class="right">查看合同></span></div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <div class="weui-cells" *ngFor="let employer of employers">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p>当前服务</p>
+            </div>
+            <div class="weui-cell__ft">{{employer.cust_name}}</div>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p>服务时间</p>
+            </div>
+            <div class="weui-cell__ft">{{employer.servicestartdate | date : 'yyyy.MM.dd'}} - {{employer.serviceenddate | date : 'yyyy.MM.dd'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+        <div class="weui-cell__bd">查看服务排期</div>
+        <span class="weui-cell__ft"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">综合评分</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="score">
+
+          <div class="score-rate">
+            <em>{{this.score.count}}</em><sub>分</sub>
+          </div>
+
+          <div class="score-label">综合评分</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-panel">
+    <div class="weui-panel__hd">技能评分</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box">
+        <canvas id="mountNode" style="width:100%;height:200px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>

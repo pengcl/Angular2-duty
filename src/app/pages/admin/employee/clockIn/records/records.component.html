@@ -1,0 +1,78 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <div class="calendar weui-panel">
+    <div class="weui-panel__hd">
+      <span (click)="getPrevMonth()" class="left">上一月</span>
+      <span>{{currDateItem.now | date : 'yyyy年MM月dd日'}}</span>
+      <span (click)="getNextMonth()" class="right">下一月</span></div>
+    <div class="weui-panel__bd">
+      <div class="weui-grids">
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">一</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">二</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">三</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">四</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">五</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">六</p>
+        </a>
+        <a href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">日</p>
+        </a>
+        <a (click)="getSignInfo(item)" *ngFor="let item of items.prev.slice(-items.curr[0].week,-1)" href="javascript:;" class="label weui-grid">
+          <p class="weui-grid__label">{{item.day}}</p>
+        </a>
+        <a (click)="getSignInfo(item)" *ngFor="let item of items.curr"
+           [ngClass]="{'now':items.now.year + '/' + items.now.month + '/' + items.now.day === item.year + '/' + item.month + '/' + item.day,'selected':currDateItem.year + '/' + currDateItem.month + '/' + currDateItem.day === item.year + '/' + item.month + '/' + item.day}"
+           href="javascript:;" class="weui-grid">
+          <p class="weui-grid__label">{{item.day}}</p>
+        </a>
+        <a (click)="getSignInfo(item)" *ngFor="let item of items.next.slice(0,(8 - items.next[0].week) === 7 ? 0 : 8 - items.next[0].week)"
+           href="javascript:;"
+           class="label weui-grid">
+          <p class="weui-grid__label">{{item.day}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="record weui-panel">
+    <div class="weui-panel__hd">您的当日打卡记录</div>
+    <div class="weui-panel__bd">
+      <div *ngIf="signInfo?.actualcheckintime" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">上班打卡 {{signInfo.actualcheckintime | date: 'HH:mm'}}</h4>
+          <p class="weui-media-box__desc">{{signInfo.startaddress}}</p>
+        </div>
+      </div>
+      <div *ngIf="!signInfo?.actualcheckintime" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">上班打卡 未打卡</h4>
+          <p class="weui-media-box__desc">未打卡，因此无打卡记录</p>
+        </div>
+      </div>
+      <div *ngIf="signInfo?.actualcheckouttime" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">下班打卡 {{signInfo.actualcheckouttime | date: 'HH:mm'}}</h4>
+          <p class="weui-media-box__desc">{{signInfo.endaddress}}</p>
+        </div>
+      </div>
+      <div *ngIf="!signInfo?.actualcheckouttime" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">下班打卡 未打卡</h4>
+          <p class="weui-media-box__desc">未打卡，因此无打卡记录</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

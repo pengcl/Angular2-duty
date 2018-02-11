@@ -1,0 +1,20 @@
+.weui-cell__hd {
+  align-self: start;
+}
+
+.un-rate {
+  color: #FBA703;
+}
+
+.ui-labels {
+  margin-top: 0.05rem;
+  .ui-label {
+    padding: 0.2em 0.8em;
+    &.curr {
+      color: #FBA703;
+      &:after {
+        border: 1px solid #FBA703;
+      }
+    }
+  }
+}

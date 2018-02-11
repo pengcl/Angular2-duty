@@ -1,0 +1,45 @@
+.weui-media-box__hd {
+  img {
+    border-radius: 10%;
+  }
+}
+
+.banner-container {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.banner-container > .banner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 200px;
+  line-height: 500px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.weui-cells_radio {
+  overflow: hidden;
+}
+
+.periods {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s;
+  transform: translate3d(0, 0, 0);
+  &.slide-down {
+    max-height: 2rem;
+  }
+  sub {
+    &.paid {
+      color: #09bb07;
+    }
+    &.unpaid {
+      color: red;
+    }
+  }
+}
+

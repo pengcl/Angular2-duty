@@ -1,0 +1,75 @@
+<div class="weui-media-box__hd" *ngIf="listType !== 'grid'">
+  <div class="avatar-box" [ngStyle]="{'background-image':'url(' + avatar + ')'}">
+    <div class="state" [ngClass]="{'off':profile.workstatus === 1,'on':profile.workstatus !== 1}">{{profile.workstatus
+      === 1 ? '空闲':'服务中'}}
+    </div>
+  </div>
+</div>
+<div class="weui-media-box__bd" *ngIf="listType !== 'grid'">
+  <h4 class="weui-media-box__title">{{profile.name}} <span class="ui-label yellow hollow horizontal">{{profile.levelname}}管家</span>
+  </h4>
+  <div class="attr">
+    <div class="weui-flex">
+      <div class="weui-flex__item">
+        <span class="label">年龄：{{profile.age}}</span>
+      </div>
+      <div class="weui-flex__item">
+        <span class="label">体重：{{profile.weight}}<sub>KG</sub></span>
+      </div>
+    </div>
+    <div class="weui-flex">
+      <div class="weui-flex__item">
+        <span class="label">身高：{{profile.height}}<sub>CM</sub></span>
+      </div>
+      <div class="weui-flex__item">
+        <span class="label">籍贯：{{profile.placeoforigin}}</span>
+      </div>
+    </div>
+    <div class="weui-flex">
+      <div class="weui-flex__item">
+        <span class="label">服务地：{{profile.serviceareanames}}</span>
+      </div>
+      <div class="weui-flex__item">
+        <span class="label">服务经验：{{profile.workexperience}}个月</span>
+      </div>
+    </div>
+  </div>
+  <div class="price">
+    <div class="weui-flex">
+      <div class="price weui-flex__item">
+        <sub>￥</sub><em>{{profile.commissionamount}}</em><sub>/月</sub>
+      </div>
+    </div>
+  </div>
+  <p class="weui-media-box__info">
+    <span *ngFor="let item of profile.expertisenames.split(','); let i = index;"
+          [ngClass]="{'red':i === 0,'blue':i === 1}"
+          class="ui-label colors horizontal">{{item}}</span>
+  </p>
+</div>
+
+<div *ngIf="listType === 'grid'" [routerLink]="['/admin/employer/employees/employee',profile._id]" class="weui-grid-box">
+  <div class="img">
+    <img src="{{profile.litPic}}">
+  </div>
+  <div class="txt">
+    <p class="attr">
+      <span class="name">{{profile.title}}</span>
+      <sub class="sex">
+        <span *ngIf="!!profile.sex">男</span>
+        <span *ngIf="!profile.sex">女</span>,
+      </sub>
+      <sub class="age">{{profile.age}},</sub>
+      <sub class="origin">{{profile.origin}}</sub>
+    </p>
+    <p class="skill">擅长：{{profile.expertisenames}}</p>
+    <div class="extra">
+      <div class="price left"><sub>￥</sub><span>10000</span><sub>/月</sub></div>
+      <div class="like right" (click)="like($event)">
+        <img *ngIf="!profile.like" src="/assets/images/icons/like.png">
+        <img *ngIf="profile.like" src="/assets/images/icons/like_fill.png">
+      </div>
+    </div>
+  </div>
+</div>
+

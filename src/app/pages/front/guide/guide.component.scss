@@ -1,0 +1,30 @@
+.content-scrollable {
+  background-image: url("/assets/images/front/guide/guide.png");
+  background-size: 100% 100%;
+}
+
+h1 {
+  font-size: 0.24rem;
+  line-height: 0.33rem;
+  text-align: center;
+  margin-top: 0.4rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 0.15rem;
+  line-height: 0.21rem;
+  margin-top: 0.05rem;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+  font-weight: 300;
+}
+
+.btn {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 80%;
+  left: 10%;
+  font-size: 0.18rem;
+}

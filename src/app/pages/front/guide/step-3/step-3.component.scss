@@ -1,0 +1,74 @@
+
+.butlers {
+  margin: 0 0.1rem;
+  .weui-grids, .weui-grid {
+    &:before, &:after {
+      display: none;
+    }
+  }
+  .weui-grid {
+    width: 50%;
+    padding: 0.1rem;
+  }
+  .butler-box {
+    .img {
+      overflow: hidden;
+      border-radius: 0.04rem;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .txt {
+      padding: 0.1rem 0 0;
+      .sex, .origin, .age {
+        color: #999;
+      }
+      p {
+        &.skill {
+          color: #999;
+          font-size: 0.1rem;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+      }
+      .extra {
+        .price {
+          font-size: 0.16rem;
+          color: red;
+        }
+        .like {
+          width: 0.16rem;
+          margin: 0.03rem 0.1rem 0;
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  ul, li {
+    list-style: none;
+  }
+}
+
+.btn {
+  font-size: 0.14rem;
+  line-height: 2.5;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  display: block;
+  border-radius: 100px;
+}
+
+.btn {
+  background: #FBA703;
+  color: #fff;
+  width: 80%;
+  left: 10%;
+  font-size: 0.18rem;
+  margin-bottom: 0.2rem;
+}

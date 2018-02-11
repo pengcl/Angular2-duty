@@ -1,0 +1,73 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <div class="weui-panel" *ngIf="housekeeper">
+    <div class="weui-panel__bd">
+      <a routerLink="/admin/setting" class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__hd">
+          <img class="avatar weui-media-box__thumb"
+               src="{{config.prefix.wApi + housekeeper.headimageurl}}"
+               alt="">
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{housekeeper.name}}{{housekeeper.sex === '1' ? '先生':'小姐'}}</h4>
+          <p class="weui-media-box__desc">{{housekeeper.serviceareanames}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="rating weui-panel">
+    <div class="weui-panel__hd">服务评星</div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_small-appmsg">
+        <app-rating class="center" [(ngModel)]="rate" [config]="ratingConfig" [readonly]="false"></app-rating>
+        <p>
+          <span *ngIf="rate >= 4">非常满意，无可挑剔</span>
+          <span *ngIf="rate < 4 && rate > 1">一般</span>
+          <span *ngIf="rate <= 1">非常差</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <form novalidate [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+
+    <div class="impressions" *ngIf="housekeeper">
+      <div class="weui-panel">
+        <div class="weui-panel__hd">对{{housekeeper.sex === '1' ? '他':'她'}}的印象</div>
+        <div class="weui-panel__bd">
+          <div class="weui-media-box">
+            <div #labels class="labels">
+              <span *ngFor="let item of impress" (click)="setImpressions(item.impressid)" class="ui-label hollow circle"
+                    [ngClass]="{'curr':rateForm.get('impress').value.split(',').indexOf('' + item.impressid) !== -1}">{{item.impressname}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment" *ngIf="housekeeper">
+      <div class="weui-panel">
+        <div class="weui-panel__hd">对{{housekeeper.sex === '1' ? '他':'她'}}的评语</div>
+        <div class="weui-panel__bd">
+
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <textarea formControlName="evaluateContent" class="weui-textarea" placeholder="请输入管家本月服务的其他建议，你的建议很重要喔！"
+                        rows="3"></textarea>
+              <div class="weui-textarea-counter"><span>0</span>/200</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="weui-btn-area">
+      <button class="weui-btn weui-btn_primary" [disabled]="rateForm.invalid">
+        提交
+      </button>
+    </div>
+  </form>
+</div>

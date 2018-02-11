@@ -1,0 +1,14 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <app-infinite-loader (loadmore)="onLoadMore($event)" #comp>
+    <div class="weui-panel weui-panel_access">
+      <div class="weui-panel__bd">
+        <app-profile [routerLink]="['/front/employees/employee', item.housekeeperid]" [profile]="item"
+                     *ngFor="let item of currLists"
+                     class="weui-media-box weui-media-box_appmsg"></app-profile>
+      </div>
+    </div>
+  </app-infinite-loader>
+  <a *ngIf="isLast" [routerLink]="['/front/guide/step4']" class="btn circle" href="javascript:;">还没选到，帮我安排吧</a>
+</div>

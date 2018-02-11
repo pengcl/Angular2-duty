@@ -1,0 +1,67 @@
+.page {
+  min-height: 100%;
+}
+
+.avatar {
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.8em;
+  border-radius: 50%;
+  display: block;
+  background-color: #fff;
+}
+
+.user-info {
+  background-image: url("/assets/images/admin/userInfo-bg.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: left bottom;
+  background-color: #162F4D;
+  padding: 0.12rem 0;
+  &:after {
+    display: none;
+  }
+  .weui-media-box__title {
+    color: #fff;
+    .ui-label {
+      font-size: 0.12rem;
+    }
+  }
+  .weui-media-box_appmsg .weui-media-box__ft {
+    position: relative;
+    padding-right: 0.18rem;
+    font-size: 0.16rem;
+    color: #fff;
+    &:after {
+      content: " ";
+      display: inline-block;
+      height: 0.08rem;
+      width: 0.08rem;
+      border-width: 2px 2px 0 0;
+      border-color: #C8C8CD;
+      border-style: solid;
+      transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      position: absolute;
+      top: 50%;
+      margin-top: -4px;
+      right: 2px;
+    }
+  }
+}
+
+.pageTips {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate3d(0px, -50%, 0px);
+  margin-top: -0.3rem;
+  p {
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+  }
+}
+
+app-admin-message {
+  min-height: 100%;
+}

@@ -1,0 +1,55 @@
+.content-scrollable {
+  background-color: #fff;
+}
+
+.calendar .weui-panel__hd {
+  text-align: center;
+}
+
+.weui-grids {
+  &:before, &:after {
+    display: none;
+  }
+}
+
+.weui-grid {
+  width: 14.28571428%;
+  padding: 0.1rem;
+  &:before, &:after {
+    display: none;
+  }
+  .weui-grid__label {
+    display: block;
+    margin: 0 auto;
+    border-radius: 1rem;
+    width: 0.24rem;
+    height: 0.24rem;
+    line-height: 0.24rem;
+  }
+  &.label {
+    display: block;
+    .weui-grid__label {
+      color: #999;
+    }
+  }
+  &.now {
+    .weui-grid__label {
+      background-color: rgb(251, 167, 3);
+    }
+  }
+  &.selected {
+    .weui-grid__label {
+      background-color: rgba(251, 167, 3, 0.8);
+    }
+  }
+}
+
+#markPage {
+  z-index: 2;
+}
+
+.weui-panel {
+  &:before, &:after {
+    display: none;
+  }
+}

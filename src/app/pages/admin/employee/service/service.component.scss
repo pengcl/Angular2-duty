@@ -1,0 +1,30 @@
+.score {
+  width: 100%;
+  text-align: center;
+  .score-rate {
+    font-size: 0.24rem;
+    text-align: center;
+    color: #FBA703;
+    em {
+      font-size: 0.48rem;
+    }
+    sub {
+      font-size: 0.14rem;
+    }
+  }
+
+  .score-label {
+    text-align: center;
+    margin: -0.05rem 0 0.1rem;
+    font-size: 0.10rem;
+    color: #999;
+  }
+}
+
+.weui-media-box {
+  .weui-cell {
+    &:before {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <form novalidate [formGroup]="subscribeForm" (ngSubmit)="onSubmit()">
+    <div class="weui-cells__title">请您留下联系方式，我们会尽快帮您安排管家</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell" [ngClass]="{'weui-cell_warn':isSubmit && subscribeForm.get('customerName').invalid}">
+        <div class="weui-cell__hd"><label for="" class="weui-label">您的称呼</label></div>
+        <div class="weui-cell__bd">
+          <input formControlName="customerName" class="weui-input" type="text" value="" placeholder="请输入姓名">
+        </div>
+        <div class="weui-cell__ft">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+      <div class="weui-cell" [ngClass]="{'weui-cell_warn':isSubmit && subscribeForm.get('customerMobile').invalid}">
+        <div class="weui-cell__hd"><label for="" class="weui-label">联系电话</label></div>
+        <div class="weui-cell__bd">
+          <input formControlName="customerMobile" class="weui-input" type="number" pattern="[0-9]*" value=""
+                 placeholder="请输入手机号">
+        </div>
+        <div class="weui-cell__ft">
+          <i class="weui-icon-warn"></i>
+        </div>
+      </div>
+      <a class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && subscribeForm.get('serviceAreaId').invalid}"
+         (click)="onShow('serviceAreaId','serviceAreaName')" href="javascript:;">
+        <div class="weui-cell__bd">
+          <input formControlName="serviceAreaId" class="weui-input" type="hidden" value="">
+          <input formControlName="serviceAreaName" class="weui-input" type="hidden" value="">
+          <p>服务城市</p>
+        </div>
+        <div class="weui-cell__ft">{{subscribeForm.get('serviceAreaName').value ?
+          subscribeForm.get('serviceAreaName').value:'未选'}} <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+    </div>
+    <div class="weui-cells__tips">大牛管家向您承诺，您的所有资料均会严格保密，请放心填写。</div>
+
+    <div class="weui-btn-area">
+      <button [userTrack]="'submit'" [ngClass]="{'weui-btn_disabled':subscribeForm.invalid}"
+              class="weui-btn weui-btn_primary">
+        提交
+      </button>
+    </div>
+  </form>
+</div>

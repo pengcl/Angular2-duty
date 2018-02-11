@@ -1,0 +1,117 @@
+.ui-label {
+  padding: 0.2em 0.8em;
+}
+
+.hollow, .colors {
+  border-radius: 100px;
+}
+
+.weui-media-box__hd {
+  width: 1rem;
+  height: auto;
+  .avatar-box {
+    overflow: hidden;
+    height: 1.3rem;
+    border-radius: 0.04rem;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    img {
+      border-radius: 0;
+    }
+    .state {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      line-height: 1.8;
+      font-size: 0.12rem;
+      color: #fff;
+      border-bottom-left-radius: 0.04rem;
+      border-bottom-right-radius: 0.04rem;
+      &.off {
+        background-color: rgba(78, 184, 118, 0.9);
+      }
+      &.on {
+        background-color: rgba(234, 90, 43, 0.9);
+      }
+    }
+  }
+}
+
+.weui-media-box__title {
+  font-size: 0.15rem;
+  color: #162F4D;
+}
+
+.weui-media-box__info {
+  margin-top: 0.05rem;
+  padding-bottom: 0;
+  &.ui-label:first-child {
+    margin-left: 0 !important;
+  }
+}
+
+.weui-media-box__thumb {
+  border-radius: 4px;
+}
+
+.weui-flex__item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attr {
+  font-size: 0.14rem;
+  line-height: 1.4;
+  color: #999;
+  sub {
+    font-size: 0.12rem;
+  }
+}
+
+.price {
+  font-size: 0.18rem;
+  color: #FBA703;
+}
+
+.weui-grid-box {
+  .img {
+    overflow: hidden;
+    border-radius: 0.04rem;
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+  .txt {
+    padding: 0.1rem 0 0;
+    .sex, .origin, .age {
+      color: #999;
+    }
+    p {
+      &.skill {
+        color: #999;
+        font-size: 0.1rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .extra {
+      .price {
+        font-size: 0.16rem;
+        color: red;
+      }
+      .like {
+        width: 0.16rem;
+        margin: 0.03rem 0.1rem 0;
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

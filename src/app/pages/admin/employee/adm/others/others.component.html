@@ -1,0 +1,32 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <div class="weui-cells__title">关于</div>
+  <div class="weui-cells">
+
+    <a class="weui-cell weui-cell_access" routerLink='/admin/employee/ADM/others/about'>
+      <div class="weui-cell__hd"><img
+        src="/assets/images/admin/employee/adm/leave.png"
+        alt="" style="width:20px;margin-right:5px;display:block"></div>
+      <div class="weui-cell__bd">
+        <p>关于大牛</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+  </div>
+
+  <div class="weui-cells__title">其他处理</div>
+  <div class="weui-cells">
+
+    <a class="weui-cell weui-cell_access" routerLink="/admin/employee/ADM/quit">
+      <div class="weui-cell__hd"><img
+        src="/assets/images/admin/employee/adm/wages.png"
+        alt="" style="width:20px;margin-right:5px;display:block"></div>
+      <div class="weui-cell__bd">
+        <p>离职申请</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+    </a>
+  </div>
+
+</div>

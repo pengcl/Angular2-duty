@@ -1,0 +1,79 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable">
+  <form novalidate [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <input formControlName="custId" class="weui-input" type="hidden">
+    <input formControlName="eventTypeId" class="weui-input" type="hidden">
+    <input formControlName="isNeedHousekeeper" type="hidden">
+    <div class="weui-cells__title">事件类型：<em>请假</em></div>
+
+    <div class="weui-cells weui-cells_form">
+      <a (click)="onPickerShow('data','leaveTypeName')" class="weui-cell weui-cell_access" href="javascript:;">
+        <div class="weui-cell__bd">
+          <p>请假类型</p>
+        </div>
+        <div class="weui-cell__ft">
+          {{eventForm.get('leaveTypeName').value ? eventForm.get('leaveTypeName').value:'未选'}}
+          <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell weui-cell_switch">
+        <div class="weui-cell__bd">更换管家</div>
+        <div class="weui-cell__ft">
+          <input (click)="needHousekeeper()" class="weui-switch" type="checkbox">
+        </div>
+      </div>
+    </div>
+
+    <div class="weui-cells weui-cells_form">
+      <a (click)="onPickerShow('datetime','startDate')" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && eventForm.get('startDate').invalid}"
+         (click)="onPickerShow('date','startDate')" href="javascript:;">
+        <div class="weui-cell__bd">
+          <input formControlName="startDate" class="weui-input" type="hidden" value="">
+          <p>开始时间</p>
+        </div>
+        <div class="weui-cell__ft">{{eventForm.get('startDate').value ?
+          eventForm.get('startDate').value:'未选'}}
+          <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+      <a (click)="onPickerShow('datetime','endDate')" class="weui-cell weui-cell_access"
+         [ngClass]="{'weui-cell_warn':isSubmit && eventForm.get('endDate').invalid}"
+         (click)="onPickerShow('date','endDate')" href="javascript:;">
+        <div class="weui-cell__bd">
+          <input formControlName="endDate" class="weui-input" type="hidden" value="">
+          <p>结束时间</p>
+        </div>
+        <div class="weui-cell__ft">{{eventForm.get('endDate').value ?
+          eventForm.get('endDate').value:'未选'}}
+          <i class="weui-icon-warn"></i>
+        </div>
+      </a>
+    </div>
+
+    <div class="weui-cells__title">请假事由</div>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <textarea formControlName="eventTitle" class="weui-textarea" placeholder="请输入您的请假事由(不少于10个字)"
+                    rows="3"></textarea>
+          <div class="weui-textarea-counter"><span>{{eventForm.value.eventTitle.length ? eventForm.value.eventTitle.length : 0}}</span>/200
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-cells__tips">1.请假前务必先与客户沟通，并至少提前1天提交申请，(特殊情况除外)。</div>
+    <div class="weui-cells__tips">2.提交申请后，请通知客户登录审批，并选择是否需要由其他管家代工。</div>
+    <div class="weui-cells__tips">如有问题，请致电客服电话沟通协调。</div>
+
+    <div class="weui-btn-area">
+      <button type="button" (click)="makeSure()" class="weui-btn weui-btn_primary" [disabled]="eventForm.invalid">
+        提交申请
+      </button>
+    </div>
+  </form>
+</div>

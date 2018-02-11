@@ -1,0 +1,60 @@
+.user-info {
+  &:before {
+    display: none;
+  }
+}
+
+.dashboard {
+  &:after {
+    display: none;
+  }
+}
+
+.dashboard {
+  padding-bottom: 2rem;
+  .weui-grids {
+    &:before, &:after {
+      display: none;
+    }
+    .weui-grid {
+      &:before, &:after {
+        display: none;
+      }
+    }
+  }
+  .item-box {
+    .img {
+      width: 0.6rem;
+      height: 0.6rem;
+      box-sizing: border-box;
+      padding: 0.12rem;
+      margin: 0.12rem auto;
+      position: relative;
+      border-radius: 100%;
+      background-color: #f8f8f8;
+      &.red {
+        background-color: #EA5A2B;
+      }
+      &.green {
+        background-color: #4EB876;
+      }
+      &.yellow {
+        background-color: #FBA703;
+      }
+      &.blue {
+        background-color: #3E9AD5;
+      }
+      img {
+        display: block;
+        width: 0.36rem;
+        height: 0.36rem;
+      }
+      .weui-badge {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: 1px solid #fff;
+      }
+    }
+  }
+}

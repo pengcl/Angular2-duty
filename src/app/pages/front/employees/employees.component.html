@@ -1,0 +1,78 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="filter">
+  <div class="filter-control weui-cells">
+    <div class="weui-cell">
+      <div class="weui-cell__bd">
+        <p>{{filterOfProducts?.length}} 条记录</p>
+
+        <div class="list-type">
+          <a href="javascript:;" (click)="setListType('list')">
+            <img src="/assets/images/icons/list.png">
+          </a>
+          <a href="javascript:;" (click)="setListType('grid')">
+            <img src="/assets/images/icons/apps.png">
+          </a>
+        </div>
+      </div>
+      <div class="weui-cell__ft" (click)="showFilter()">条件查找</div>
+    </div>
+  </div>
+  <div class="filter-content" [@simAnim]="animationName" *ngIf="filterShow">
+    <div class="weui-form-preview">
+      <div class="weui-form-preview__bd">
+        <div class="weui-cells__title">想看到的性别</div>
+        <div class="weui-navbar">
+          <div (click)="setFilter(['sex:',filter[1]])" [ngClass]="{'weui-bar__item_on':filter[0] === ''}"
+               class="weui-navbar__item weui-bar__item_on">
+            全部
+          </div>
+          <div (click)="setFilter(['sex:1',filter[1]])" [ngClass]="{'weui-bar__item_on':filter[0] === '1'}"
+               class="weui-navbar__item">
+            男
+          </div>
+          <div (click)="setFilter(['sex:0',filter[1]])" [ngClass]="{'weui-bar__item_on':filter[0] === '0'}"
+               class="weui-navbar__item">
+            女
+          </div>
+        </div>
+        <div class="weui-cells__title">想看到级别</div>
+        <div class="weui-navbar">
+          <div (click)="setFilter([filter[0],'levelname:'])" [ngClass]="{'weui-bar__item_on':filter[1] === ''}"
+               class="weui-navbar__item weui-bar__item_on">
+            全部
+          </div>
+          <div (click)="setFilter([filter[0],'levelname:金牌'])" [ngClass]="{'weui-bar__item_on':filter[1] === '2'}"
+               class="weui-navbar__item">
+            金牌
+          </div>
+          <div (click)="setFilter([filter[0],'levelname:银牌'])" [ngClass]="{'weui-bar__item_on':filter[1] === '1'}"
+               class="weui-navbar__item">
+            银牌
+          </div>
+        </div>
+      </div>
+      <div class="weui-form-preview__ft">
+        <a class="weui-form-preview__btn weui-form-preview__btn_primary" (click)="selectedFilter(filter)"
+           href="javascript:">确定</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-scrollable">
+
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-infinite-loader (loadmore)="onLoadMore($event)" #comp>
+        <div [ngClass]="{'weui-grids':listType === 'grid'}">
+          <app-profile [routerLink]="['/front/employees/employee', item._id]" [profile]="item"
+                       [moJsReady]="moJsReady"
+                       [listType]="listType"
+                       *ngFor="let item of currProducts"
+                       [ngClass]="{'weui-grid':listType === 'grid','weui-media-box weui-media-box_appmsg':listType !== 'grid'}"></app-profile>
+        </div>
+      </app-infinite-loader>
+    </div>
+  </div>
+</div>

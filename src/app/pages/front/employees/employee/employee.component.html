@@ -1,0 +1,148 @@
+<app-navbar [navBar]="navBarConfig"></app-navbar>
+
+<div class="content-scrollable has-footer">
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <app-profile *ngIf="housekeeper" [profile]="housekeeper"
+                   class="weui-media-box weui-media-box_appmsg"></app-profile>
+    </div>
+    <!--<div class="weui-panel__ft">
+      <div class="weui-grids">
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+        <div class="weui-grid">
+          <div class="weui-grid__icon">
+            <img src="/assets/images/icons/icon_tabbar.png">
+          </div>
+          <div class="weui-grid__label">
+            健康证
+          </div>
+        </div>
+      </div>
+    </div>-->
+  </div>
+
+  <div *ngIf="housekeeper?.workexperience" class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">管家履历</div>
+        <span class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="weui-media-box__bd">
+          <p class="weui-media-box__desc">{{housekeeper.workexperience}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feeds weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">客户评价</div>
+        <span [routerLink]="['/front/employees/employee/rates',housekeeper?.housekeeperid]"
+              class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <app-rate [rate]="rate" *ngFor="let rate of rates.slice(0,3)"
+                class="weui-media-box weui-media-box_appmsg"></app-rate>
+    </div>
+  </div>
+
+  <div *ngIf="images?.length > 0" class="weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">照片</div>
+        <span class="weui-cell__ft">查看更多</span>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+
+      <div class="weui-grids">
+        <div *ngFor="let img of (images ? images.slice(0,3): []);let i = index;" class="weui-grid">
+          <div (click)="showGallery(i)" class="photo"
+               [ngStyle]="{'background-image':'url(' + config.prefix.wApi + img + ')'}">
+
+          </div>
+        </div>
+      </div>
+      <app-gallery [(show)]="show" [current]="galleryCurrent" (delete)="onDelete($event)" [canDelete]="false"
+                   [slides]="images"></app-gallery>
+    </div>
+
+  </div>
+
+  <div class="skills weui-panel weui-panel_access">
+    <div class="weui-panel__hd">
+      <a href="javascript:void(0);" class="weui-cell weui-cell_access">
+        <div class="weui-cell__bd">技能图谱</div>
+      </a>
+    </div>
+    <div class="weui-panel__bd">
+      <div class="weui-media-box weui-media-box_appmsg">
+        <div class="score">
+
+          <div class="score-rate">
+            <em>{{this.score.count}}</em><sub>分</sub>
+          </div>
+
+          <div class="score-label">综合评分</div>
+        </div>
+      </div>
+      <div class="weui-media-box">
+        <canvas id="mountNode" style="width:100%;height:200px;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="weui-btn-area">
+    <a *ngIf="housekeeper" (click)="reserve(housekeeper.workstatus === 1)"
+       [userTrack]="'reserve'"
+       class="weui-btn" [ngClass]="housekeeper.workstatus === 1 ? 'weui-btn_primary':'weui-btn_warn'">
+      {{housekeeper.workstatus === 1 ? '预约服务':'服务中不可预约，先收藏了！'}}
+    </a>
+  </div>
+
+  <!--<div class="photos">
+    <div class="weui-grids">
+      <a *ngFor="let item of slides" href="javascript:;" (click)="showGallery(true)" class="weui-grid">
+        <img src="{{item}}" alt="">
+      </a>
+    </div>
+  </div>-->
+
+
+</div>
